@@ -7,7 +7,7 @@ public class Student
     private ArrayList<Integer> grades;
 
     //The Student class should have a constructor that sets both the name and id property, it initializes the grades property as an empty ArrayList.
-    public Student(String name, long id)
+    public Student(long id, String name)
     {
         this.name = name;
         this.id = id;

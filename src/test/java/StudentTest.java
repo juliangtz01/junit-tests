@@ -1,14 +1,41 @@
-public class StudentTest
-{
-    public static void main(String[] args)
-    {
-        Student julian = new Student("Julian", 01);
+import org.junit.Test;
 
-        julian.addGrade(80);
-        julian.addGrade(90);
-        julian.addGrade(80);
-        julian.addGrade(70);
+import java.util.ArrayList;
 
-        System.out.printf("Student %s has a grade average of %.0f.", julian.getName(), julian.getGradeAverage());
+import static org.junit.Assert.*;
+
+public class StudentTest {
+    @Test
+    public void testCreateStudent(){
+        Student fer = new Student(1L, "fer");
+        Student ryan = null;
+        assertNull(ryan);
+        assertNotNull(fer);
+    }
+
+    @Test
+    public void testStudentFields(){
+        Student fer = new Student(1L, "fer");
+        assertSame(1L, fer.getId());
+        assertSame("fer", fer.getName());
+        assertSame(0, fer.getGrades().size());
+    }
+
+
+    @Test
+    public void testAddGrade(){
+        Student fer = new Student(1L, "fer");
+        fer.addGrade(100);
+        assertSame(100, fer.getGrades().get(0));
+        fer.addGrade(80);
+        assertSame(80, fer.getGrades().get(1));
+    }
+
+    @Test
+    public void testAverageGrade(){
+        Student fer = new Student(1L, "fer");
+        fer.addGrade(100);
+        fer.addGrade(80);
+        assertEquals(90, fer.getGradeAverage(), 0);
     }
 }
