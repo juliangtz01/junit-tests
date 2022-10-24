@@ -24,7 +24,6 @@ public class CohortTest
         juan.addGrade(100);
         juan.addGrade(90);
 
-        //A Cohort instance can add a Student to the List of students.
         cohortBlue.addStudent(julian);
 
         cohortRed.addStudent(julian);
@@ -32,10 +31,22 @@ public class CohortTest
 
     }
 
+    //A Cohort instance can add a Student to the List of students.
+    @Test
+    public void testIfGetStudentWorks()
+    {
+        cohortRed.addStudent(new Student(4, "Gracie"));
+        assertEquals("Gracie", cohortRed.getStudents().get(2).getName());
+
+        cohortRed.addStudent(new Student(5, "Rosie"));
+        assertEquals(4, cohortRed.getStudents().size());
+    }
+
     //A Cohort instance can get the current List of students.
     @Test
-    public void testIfGetStudentListWors()
+    public void testIfGetStudentWork()
     {
+        assertEquals(0, cohortGreen.getStudents().size());
         assertEquals(1, cohortBlue.getStudents().size());
         assertEquals(2, cohortRed.getStudents().size());
     }
